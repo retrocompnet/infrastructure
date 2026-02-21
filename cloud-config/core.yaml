@@ -1,0 +1,9 @@
+#cloud-config
+
+packages:
+  - bird
+  - wireguard
+
+runcmd:
+  - wg genkey |tee /etc/wireguard/private.key |wg pubkey >/etc/wireguard/public.key
+  - ufw allow 51820
